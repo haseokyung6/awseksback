@@ -13,7 +13,10 @@ metadata:
   namespace: sample-app
 type: Opaque
 stringData:
-  S3_BUCKET_NAME: "${S3_BUCKET_NAME}"
+  S3_BUCKET_NAME: "sample-app-hsk-dev-files-624480629666"
+  DB_URL: "jdbc:mysql://sample-app-hsk-mysql.cd42qk0eknmb.us-west-1.rds.amazonaws.com:3306/mydb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8"
+  DB_USERNAME: "admin"
+  DB_PASSWORD: "eekfrl06"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,7 +41,7 @@ spec:
       serviceAccountName: backend-sa
       containers:
         - name: backend
-          image: ${BACKEND_IMAGE}
+          image: 624480629666.dkr.ecr.us-west-1.amazonaws.com/sample-app-hsk/backend:latest
           ports:
             - containerPort: 8080
           env:
